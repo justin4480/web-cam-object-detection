@@ -20,7 +20,7 @@ class WebCamObjectDetection:
 		self.capture.set(cv2.CAP_PROP_MODE, 1)
 
 	def capture_frame(self):
-		_, self.frame = self.capture.read()
+		ret, self.frame = self.capture.read()
 		self.frame = self.frame[8:-8, 48:-48, :]
 
 	def detect_object(self):
@@ -31,7 +31,7 @@ class WebCamObjectDetection:
 
 	def show_image(self):
 		fig, ax = plt.subplots(1,1)
-		ax.imshow("cam", self.frame)
+		ax.imshow(self.frame)
 		ax.set_title(f'prediction: {self.top_predictions}')
 		plt.show()
 
